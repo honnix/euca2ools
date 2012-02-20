@@ -74,6 +74,8 @@ class DescribeInstances(euca2ools.commands.eucacommand.EucaCommand):
                      Valid values are ovm | xen."""),
                Param(name='image-id', ptype='string',
                      doc='ID of the imageID used to launch the instance'),
+               Param(name='display-name', ptype='string',
+                     doc='Display name of the instance'),
                Param(name='instance-id', ptype='string',
                      doc='ID of the instance'),
                Param(name='instance-lifecycle', ptype='string',

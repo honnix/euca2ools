@@ -69,7 +69,7 @@ def parse_config(config, dict, keylist):
             dict[keylist[i]] = values[i]
 
 def print_instances(instances, nil=""):
-    members=( "id", "image_id", "public_dns_name", "private_dns_name",
+    members=( "id", "image_id", "display_name", "public_dns_name", "private_dns_name",
         "state", "key_name", "ami_launch_index", "product_codes",
         "instance_type", "launch_time", "placement", "kernel",
         "ramdisk" )

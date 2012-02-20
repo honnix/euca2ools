@@ -39,7 +39,10 @@ import os.path
 class RunInstances(euca2ools.commands.eucacommand.EucaCommand):
 
     Description = 'Starts instances.'
-    Options = [Param(name='count', short_name='n', long_name='instance-count',
+    Options = [Param(name='display_name', long_name='name',
+                     optional=True, ptype='string',
+                     doc='Display name of the instance.'),
+               Param(name='count', short_name='n', long_name='instance-count',
                      optional=True, ptype='string', default='1',
                      doc='Number of instances to run.'),
                Param(name='group_name', short_name='g', long_name='group',
@@ -133,6 +136,7 @@ class RunInstances(euca2ools.commands.eucacommand.EucaCommand):
         conn = self.make_connection_cli()
         return self.make_request_cli(conn, 'run_instances',
                                      image_id=self.image_id,
+                                     display_name=self.display_name,
                                      min_count=min_count,
                                      max_count=max_count,
                                      key_name=self.keyname,
