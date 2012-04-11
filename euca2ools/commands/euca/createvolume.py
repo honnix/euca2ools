@@ -39,7 +39,7 @@ class CreateVolume(euca2ools.commands.eucacommand.EucaCommand):
     Description = 'Creates a volume in a specified availability zone.'
     Options = [Param(name='size', short_name='s', long_name='size',
                      optional=True, ptype='integer',
-                     doc='size of the volume (in GiB).'),
+                     doc='size of the volume (in GiB), 0 means all available space.'),
                Param(name='snapshot', long_name='snapshot',
                      optional=True, ptype='string',
                      doc="""snapshot id to create the volume from.
@@ -60,7 +60,7 @@ class CreateVolume(euca2ools.commands.eucacommand.EucaCommand):
         print 'VOLUME\t%s' % volume_string
 
     def main(self):
-        if (self.size or self.snapshot) and self.zone:
+        if (self.size is not None or self.snapshot) and self.zone:
             conn = self.make_connection_cli()
             return self.make_request_cli(conn, 'create_volume',
                                          size=self.size, zone=self.zone,
